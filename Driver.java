@@ -8,6 +8,10 @@ import java.sql.Statement;
 
 import ca.java.exercise.connection.DBConstants;
 
+/*
+ * download jdbc driver from https://dev.mysql.com/downloads/connector/j/
+ * OS: Platform independent (zip file)
+ */
 public class Driver {
 	
 	public static final String ALL_DEP_QUERY = "select * from department";
