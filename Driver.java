@@ -20,6 +20,7 @@ public class Driver {
 	public static final String ALL_EMP_QUERY = "select * from employee";
 	public static final String INSERT_EMP = 
 			"INSERT INTO EMPLOYEE (emp_fname, emp_lname, start_date, dep_id) VALUES (?,?,?,?)";
+	public static final String DELETE_EMP = "DELETE FROM EMPLOYEE WHERE emp_id = ?";
 	
 	private static Connection getConnection() throws SQLException {		
 		return DriverManager.getConnection(DBConstants.CONN_STRING, DBConstants.USER, DBConstants.PASSWORD);
@@ -50,19 +51,25 @@ public class Driver {
 //			stmt.executeUpdate("INSERT INTO EMPLOYEE (emp_fname, emp_lname, start_date, dep_id)"
 //					+ "VALUES ('John','Doe','2020-08-08',1)");
 			
+			//DELETE USING PREPARED STATEMENT
+//			PreparedStatement delStmt = conn.prepareStatement(DELETE_EMP);
+//			delStmt.setInt(1, 3);
+//			int delResult = delStmt.executeUpdate();
+//			System.out.println("Affected rows: " + delResult);
+			
 			//INSERT USING PREPARED STATEMENT
-			PreparedStatement pStmt = conn.prepareStatement(INSERT_EMP);
-			pStmt.setString(1, "Kira");
-			pStmt.setString(2, "Dora");
-			pStmt.setDate(3, Date.valueOf("2020-09-10"));
-			pStmt.setInt(4, 2);
-			int result = pStmt.executeUpdate();
-			System.out.println("Rows affected: " + result);
+//			PreparedStatement pStmt = conn.prepareStatement(INSERT_EMP);
+//			pStmt.setString(1, "Kira");
+//			pStmt.setString(2, "Dora");
+//			pStmt.setDate(3, Date.valueOf("2020-09-10"));
+//			pStmt.setInt(4, 2);
+//			int result = pStmt.executeUpdate();
+//			System.out.println("Rows affected: " + result);
 			
 			//PRINT ALL EMPLOYEES
 			rsEmp = getQuery(conn, ALL_EMP_QUERY);
 			while(rsEmp.next()) {
-				System.out.println(rsEmp.getString("emp_fname"));
+				System.out.printf("\nName: %s, %s", rsEmp.getString("emp_lname"), rsEmp.getString("emp_fname"));
 			}
 			
 		} catch (SQLException e) {
@@ -86,8 +93,5 @@ public class Driver {
 			}
 		}
 	}
-
-
-
 
 }
