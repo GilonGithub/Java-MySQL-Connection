@@ -13,6 +13,9 @@ import ca.java.exercise.connection.DBConstants;
 /*
  * download jdbc driver from https://dev.mysql.com/downloads/connector/j/
  * OS: Platform independent (zip file)
+ * 1. Create a Connection
+ * 2. Create a Statement or PreparedStatement then Execute
+ * 3. Get the result set for SELECT query
  */
 public class Driver {
 	
